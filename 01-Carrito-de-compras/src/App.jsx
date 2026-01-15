@@ -7,6 +7,22 @@ import Header from "./Components/Header"
 function App() {
 
   const [data, setData] = useState(db)
+  const [cart, setCart] = useState([])
+
+  const addToCart = (guitar)=>{
+    const guitarExist = cart.findIndex(item=>item.id == guitar.id)
+    if(guitarExist == -1){
+      guitar.quantity = 1
+      setCart([...cart, guitar])
+      console.log("no existia ")
+    }else{
+      console.log("ya existe")
+    }
+
+    
+    
+    console.log(guitarExist)
+  }
   return (
     <>
       <Header />
@@ -16,8 +32,12 @@ function App() {
 
         <div className="row mt-5">
 
-          {db.map(() => (
-            <Guitar />
+          {db.map(item => (
+            <Guitar 
+              key={item.id}
+              data={item}
+              addToCart={addToCart}
+            />
           ))}
 
 
