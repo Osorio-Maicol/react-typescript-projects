@@ -9,23 +9,31 @@ function App() {
   const [data, setData] = useState(db)
   const [cart, setCart] = useState([])
 
-  const addToCart = (guitar)=>{
-    const guitarExist = cart.findIndex(item=>item.id == guitar.id)
-    if(guitarExist == -1){
+  const addToCart = (guitar) => {
+
+    const itemExist = cart.findIndex(item => item.id == guitar.id)
+    if (itemExist < 0) {
       guitar.quantity = 1
       setCart([...cart, guitar])
-      console.log("no existia ")
-    }else{
-      console.log("ya existe")
+    } else {
+      const itemUpdate = [...cart]
+      itemUpdate[itemExist].quantity++
+      setCart(itemUpdate)
+      console.log(cart)
     }
 
-    
-    
-    console.log(guitarExist)
   }
+
+  const removeCart = (id)=>{
+    setCart(cart.filter(item=> item.id !== id))
+  }
+
   return (
     <>
-      <Header />
+      <Header 
+        cart={cart}
+        removeCart={removeCart}
+      />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
@@ -33,7 +41,7 @@ function App() {
         <div className="row mt-5">
 
           {db.map(item => (
-            <Guitar 
+            <Guitar
               key={item.id}
               data={item}
               addToCart={addToCart}
