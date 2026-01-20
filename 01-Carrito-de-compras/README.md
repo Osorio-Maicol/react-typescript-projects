@@ -1,16 +1,61 @@
-# React + Vite
+# 🛒 Proyecto 01 – Carrito de Compras con React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto corresponde al **primer proyecto práctico del curso de React**, donde se desarrolla un **carrito de compras funcional** aplicando los fundamentos esenciales de React.
 
-Currently, two official plugins are available:
+El enfoque principal fue aprender React desde la práctica, entendiendo cómo se estructura una aplicación real y cómo se maneja el estado.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🌐 Demo del Proyecto
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+👉 **Ver aplicación en producción:**  
+https://cart-de-compras.netlify.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧠 ¿Qué se desarrolló en este proyecto?
+
+Este proyecto se enfocó en aprender **React desde cero**, construyendo paso a paso la lógica completa de un carrito de compras.
+
+Durante el desarrollo se trabajó en:
+
+- Creación y organización de componentes
+- Manejo de estado con `useState`
+- Uso de `useEffect`
+- Renderizado dinámico de listas
+- Comunicación entre componentes mediante props
+- Manejo de eventos en JSX
+
+---
+
+## 🛒 Funcionalidades del Carrito
+
+- Mostrar un listado de productos
+- Agregar productos al carrito
+- Detectar productos repetidos
+- Manejar cantidades por producto
+- Incrementar y eliminar artículos
+- Vaciar el carrito
+- Mostrar mensaje cuando el carrito está vacío
+- Calcular el total a pagar
+
+---
+
+## 💾 Persistencia de Datos
+
+- Guardado del carrito en **LocalStorage**
+- Recuperación automática de los productos al recargar la página
+
+---
+
+## 🎯 Objetivo del Proyecto
+
+Comprender los **fundamentos de React** y el manejo del estado en una aplicación real, sirviendo como base para proyectos más avanzados.
+
+---
+
+## ▶️ Ejecución del Proyecto
+
+```bash
+npm install
+npm run dev
