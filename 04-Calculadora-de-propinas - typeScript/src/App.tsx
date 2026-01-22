@@ -1,11 +1,12 @@
-import { useState } from "react"
-import { menuItems } from "./data/db"
-import type { MenuItems } from "./types"
 import { Menu } from "./components/Menu"
+import { OrderItem } from "./components/OrderItem"
+import { useOrder } from "./hooks/userOrder"
 
 function App() {
 
-  const [data] = useState<MenuItems[]>(menuItems)
+  const { data, order, addOrder } = useOrder()
+
+
   return (
     <>
       <header className="w-full ring-1 p-5 flex justify-center bg-green-400">
@@ -21,14 +22,22 @@ function App() {
               <Menu
                 key={item.id}
                 item={item}
+                addOrder={addOrder}
               />
             ))}
           </div>
         </section>
 
 
-        <section className="flex items-center capitalize flex-col p-2 border-r-2">
-          <h2 className="font-bold text-2xl mb-5">calculadora</h2>
+        <section className="flex items-center capitalize flex-col p-2 space-y-2">
+          <h2 className="font-bold text-2xl mb-5">consumo</h2>
+          {order.length ? order.map(item => (
+            <OrderItem
+              key={item.id}
+              item={item}
+            />
+          )) : <p className=" shadow-black/50 shadow-xl w-3/4 flex justify-center items-center ring-1 p-5 rounded-xl">la orden esta vacia</p>}
+
         </section>
 
       </main>
