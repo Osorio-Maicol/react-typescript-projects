@@ -33,11 +33,17 @@ export const useOrder = () => {
 
     }
 
+    const deleteOrder = (id : MenuItems["id"])=>{
+        const orderUpdate = order.filter(order=>order.id !== id)
+        setOrder(orderUpdate)
+    }
+
     
 
     return {
         data,
         order,
-        addOrder
+        addOrder,
+        deleteOrder
     }
 }

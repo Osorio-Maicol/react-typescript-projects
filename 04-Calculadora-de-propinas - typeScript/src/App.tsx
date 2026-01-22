@@ -1,10 +1,11 @@
 import { Menu } from "./components/Menu"
 import { OrderItem } from "./components/OrderItem"
+import { OrderTotal } from "./components/OrderTotal"
 import { useOrder } from "./hooks/userOrder"
 
 function App() {
 
-  const { data, order, addOrder } = useOrder()
+  const { data, order, addOrder, deleteOrder } = useOrder()
 
 
   return (
@@ -35,8 +36,11 @@ function App() {
             <OrderItem
               key={item.id}
               item={item}
+              deleteOrder={deleteOrder}
             />
           )) : <p className=" shadow-black/50 shadow-xl w-3/4 flex justify-center items-center ring-1 p-5 rounded-xl">la orden esta vacia</p>}
+
+          <OrderTotal/>
 
         </section>
 
