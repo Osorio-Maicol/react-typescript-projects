@@ -6,6 +6,7 @@ export const useOrder = () => {
 
     const [data] = useState<MenuItems[]>(menuItems)
     const [order, setOrder] = useState<OrderItems[]>([])
+    const [ tip, setTip] = useState(0)
 
     const addOrder = (item: MenuItems) => {
 
@@ -38,12 +39,20 @@ export const useOrder = () => {
         setOrder(orderUpdate)
     }
 
+    const clearOrder = ()=>{
+        setOrder([])
+        setTip(0)
+    }
+
     
 
     return {
         data,
         order,
         addOrder,
-        deleteOrder
+        deleteOrder,
+        tip,
+        setTip,
+        clearOrder
     }
 }

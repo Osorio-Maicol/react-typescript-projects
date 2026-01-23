@@ -1,26 +1,52 @@
 import { useMemo } from "react"
+import { formarCurrency } from "../helpers/format"
+import type { OrderItems } from "../types"
 
+type OrderTotalProps = {
+  order: OrderItems[]
+  tip: number
+}
 
-export const OrderTotal = () => {
-    
-    return (
-        <div className="ring-1 w-3/4 rounded-xl p-2 flex shadow-blue-700 shadow- items-center flex-col capitalize text-xl space-y-1">
-            <h3 className="font-extrabold text-2xl ">factura</h3>
-            <div className="flex  justify-between w-full px-2 border-b">
-                <p>{"subtotal"}</p>
-                <span>{"30"}</span>
-            </div>
+export const OrderTotal = ({ order, tip }: OrderTotalProps) => {
 
-            <div className="flex  justify-between w-full px-2 border-b">
-                <p>{"propina"}</p>
-                <span>{"30"}</span>
-            </div>
+  const subtotal = useMemo(
+    () => order.reduce((acc, item) => acc + item.price * item.quantity, 0),
+    [order]
+  )
 
-            <div className="flex justify-between w-full px-2 border-b">
-                <p>{"total a pagar"}</p>
-                <span>{"30"}</span>
-            </div>
-            
-        </div>
-    )
+  const tipTotal = useMemo(
+    () => subtotal * tip,
+    [subtotal, tip]
+  )
+
+  const total = useMemo(
+    () => subtotal + tipTotal,
+    [subtotal, tipTotal]
+  )
+
+  return (
+    <div className="w-3/4 bg-white rounded-xl p-4 shadow-md flex flex-col gap-3">
+      
+      <h3 className="font-bold text-2xl text-center capitalize">
+        factura
+      </h3>
+
+      <div className="flex justify-between text-gray-600">
+        <p>subtotal</p>
+        <span>{formarCurrency(subtotal)}</span>
+      </div>
+
+      <div className="flex justify-between text-gray-600">
+        <p>propina</p>
+        <span>{formarCurrency(tipTotal)}</span>
+      </div>
+
+      <hr />
+
+      <div className="flex justify-between font-bold text-xl text-green-600">
+        <p>total a pagar</p>
+        <span>{formarCurrency(total)}</span>
+      </div>
+    </div>
+  )
 }
