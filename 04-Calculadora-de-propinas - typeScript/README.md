@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# 🍽️ Proyecto 02 – Control de Consumo y Propinas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto corresponde al **segundo proyecto práctico del curso**, donde se construye una aplicación para **gestionar una orden de consumo**, calcular **propinas** y obtener el **total a pagar**, aplicando buenas prácticas con **React, TypeScript y TailwindCSS**.
 
-Currently, two official plugins are available:
+El enfoque principal fue reforzar el manejo del estado, hooks personalizados y tipado estricto en un proyecto real.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🌐 Demo del Proyecto
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+👉 **Ver aplicación en producción:**  
+https://consumos-y-propinas.netlify.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tecnologías Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- ⚛️ React
+- 🟦 TypeScript
+- 🎣 React Hooks (`useState`, `useMemo`, `useCallback`)
+- 🪝 Hook personalizado para la orden
+- 🎨 TailwindCSS
+- ⚡ Vite
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧠 ¿Qué se desarrolló en este proyecto?
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Durante el desarrollo del proyecto se trabajaron los siguientes conceptos:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Creación y configuración del proyecto
+- Introducción e instalación de **TailwindCSS**
+- Uso de extensiones recomendadas para VSCode
+- Creación de componentes reutilizables
+- Renderizado dinámico de productos del menú
+- Organización de contenedores principales
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🪝 Hook Personalizado para la Orden
+
+Se creó un **hook personalizado** para manejar la lógica de la orden, incluyendo:
+
+- Estado de los artículos seleccionados
+- Función para agregar artículos
+- Tipado de funciones con TypeScript
+- Evitar productos duplicados
+- Eliminación de artículos
+- Reinicio completo de la orden
+
+Esto permite mantener los componentes más limpios y enfocados en la interfaz.
+
+---
+
+## 📦 Manejo de Estado y TypeScript
+
+- Tipado de productos y elementos de la orden
+- Uso de `type` e interfaces
+- Tipado de funciones y props
+- Código más seguro, mantenible y escalable
+
+---
+
+## 💰 Cálculo de Consumo y Propinas
+
+- Cálculo del consumo total
+- Selección de porcentaje de propina
+- Cálculo del valor de la propina
+- Cálculo del total a pagar
+- Formateo de cantidades
+
+---
+
+## ⚡ Optimización del Rendimiento
+
+- Uso de `useMemo` para cálculos derivados
+- Diferencia práctica entre `useMemo` y `useCallback`
+- Evitar renders innecesarios
+
+---
+
+## ▶️ Ejecución del Proyecto
+
+```bash
+npm install
+npm run dev
