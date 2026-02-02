@@ -1,23 +1,26 @@
 import { useMemo, useState, type Dispatch } from "react"
+import {v4 as uuidv4} from "uuid"
 import { categories } from "../Data/db"
 import type { Activity } from "../types"
 import type { ActivityActions } from "../Reducer/ActivityReducer"
 
 type FormsProps = {
-    dispatch : Dispatch<ActivityActions>
+    dispatch: Dispatch<ActivityActions>
 }
 
-export const Form = ({dispatch} : FormsProps) => {
+export const Form = ({ dispatch }: FormsProps) => {
 
-    const [calories, setCalories] = useState<Activity>({
+    const initilState = {
+        id: uuidv4(),
         categories: 1,
         nombre: "",
         caloris: 0
-    })
+    }
+    const [calories, setCalories] = useState<Activity>(initilState)
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
 
-        const updateActiviti = ["categories", "calories"].includes(e.target.name)
+        const updateActiviti = ["categories", "caloris"].includes(e.target.name)
 
         setCalories({
             ...calories,
@@ -31,9 +34,11 @@ export const Form = ({dispatch} : FormsProps) => {
         return nombre.trim() != "" && caloris > 0
     }, [calories])
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch({type: "save-activity", payload: {newActivitiy : calories }})
+        dispatch({ type: "save-activity", payload: { newActivitiy: calories } })
+        setCalories(initilState)
+
     }
 
     return (
@@ -72,9 +77,9 @@ export const Form = ({dispatch} : FormsProps) => {
             </div>
 
             {/* BOTÓN */}
-            <button type="submit" className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600 transition disabled:opacity-35 capitalize text-xl" disabled={!isValidForm()}> {`calcular ${calories.categories == 1 ? "comidas" : "ejercicios"}`}</button>
+            <button type="submit" className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600 transition disabled:opacity-35 capitalize text-xl" disabled={!isValidForm()}> {`agergar ${calories.categories == 1 ? "comidas" : "ejercicios"}`}</button>
 
-            
+
         </form>
     )
 }

@@ -1,13 +1,14 @@
 import { useReducer } from "react"
 import { Form } from "./components/Form"
 import { ActivityReducer, ActivityState } from "./Reducer/ActivityReducer"
+import { ActivityList } from "./components/ActivityList"
 
 function App() {
-  
+
   const [state, dispatch] = useReducer(ActivityReducer, ActivityState)
 
   return (
-    
+
     <>
       <header className="bg-green-400 w-full flex justify-center items-center p-2">
 
@@ -17,11 +18,17 @@ function App() {
         </div>
       </header>
 
-      <main className="w-full bg-green-200 h-100% p-5 ">
+      <main className="w-full bg-green-200 h-100% p-5 space-y-3 ">
         <section className="w-full flex justify-center">
           <Form
             dispatch={dispatch}
           />
+        </section>
+
+        <section className="w-full flex justify-center">
+           <ActivityList
+            activityState= {state.activities}
+           />
         </section>
       </main>
     </>
