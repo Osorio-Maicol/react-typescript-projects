@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useEffect, useMemo, useReducer } from "react"
 import { Form } from "./components/Form"
 import { ActivityReducer, ActivityState } from "./Reducer/ActivityReducer"
 import { ActivityList } from "./components/ActivityList"
@@ -6,6 +6,14 @@ import { ActivityList } from "./components/ActivityList"
 function App() {
 
   const [state, dispatch] = useReducer(ActivityReducer, ActivityState)
+
+  const isEmpty = useMemo(()=>state.activities.length
+  ,[state.activities])
+
+  useEffect(()=>{
+    localStorage.setItem("activity", JSON.stringify(state.activities))
+  }
+  ,[state.activities])
 
   return (
 
@@ -26,6 +34,8 @@ function App() {
           
           />
         </section>
+
+        {isEmpty? <p className="text-2xl capitalize font-extrabold text-shadow-md text-shadow-white text-center">consumos y calorias</p> : <p className="text-2xl capitalize font-extrabold text-shadow-md text-shadow-white text-center">no hay datos que mostrar</p>}
 
         <section className="w-full flex justify-center">
            <ActivityList
