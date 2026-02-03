@@ -1,14 +1,15 @@
-import { useMemo, useState, type Dispatch } from "react"
+import { useEffect, useMemo, useState, type Dispatch } from "react"
 import {v4 as uuidv4} from "uuid"
 import { categories } from "../Data/db"
 import type { Activity } from "../types"
-import type { ActivityActions } from "../Reducer/ActivityReducer"
+import type { ActivityActions, Activityt } from "../Reducer/ActivityReducer"
 
 type FormsProps = {
     dispatch: Dispatch<ActivityActions>
+    state: Activityt
 }
 
-export const Form = ({ dispatch }: FormsProps) => {
+export const Form = ({ dispatch, state }: FormsProps) => {
 
     const initilState = {
         id: uuidv4(),
@@ -40,6 +41,13 @@ export const Form = ({ dispatch }: FormsProps) => {
         setCalories(initilState)
 
     }
+
+    useEffect(()=>{
+        if(state.activityId){
+            const updateActivity = state.activities.filter(item=>item.id == state.activityId)[0]
+            setCalories(updateActivity)
+        }
+    },[state.activityId])
 
     return (
         <form className="bg-white rounded-lg w-3/4 p-4 space-y-4 shadow-md" onSubmit={handleSubmit

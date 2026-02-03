@@ -22,12 +22,15 @@ function App() {
         <section className="w-full flex justify-center">
           <Form
             dispatch={dispatch}
+            state={state}
+          
           />
         </section>
 
         <section className="w-full flex justify-center">
            <ActivityList
             activityState= {state.activities}
+            dispatch={dispatch}
            />
         </section>
       </main>
