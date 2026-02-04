@@ -2,6 +2,7 @@ import { useEffect, useMemo, useReducer } from "react"
 import { Form } from "./components/Form"
 import { ActivityReducer, ActivityState } from "./Reducer/ActivityReducer"
 import { ActivityList } from "./components/ActivityList"
+import { AdminCaloris } from "./components/AdminCaloris"
 
 function App() {
 
@@ -15,6 +16,8 @@ function App() {
   }
   ,[state.activities])
 
+
+  const activityEmpty = useMemo(()=>state.activities.length < 1, [state.activities])
   return (
 
     <>
@@ -22,7 +25,7 @@ function App() {
 
         <h1 className="text-end capitalize text-3xl font-extrabold text-shadow-md text-shadow-white">Contador de calorias y ejercicio - useReducer</h1>
         <div className="w-1/4 text-end">
-          <button className="ring-1 px-2 py-1 rounded-md capitalize font-medium hover:shadow-md shadow-black duration-300 cursor-pointer hover:text-green-100">reiniciar app</button>
+          <button className="ring-1 px-2 py-1 rounded-md capitalize font-medium shadow-black duration-300 cursor-pointer  disabled:opacity-20 disabled:ring-offset-black disabled:cursor-auto" disabled={activityEmpty} onClick={()=>dispatch({type: "clear-activity"})}>reiniciar app</button>
         </div>
       </header>
 
@@ -33,6 +36,12 @@ function App() {
             state={state}
           
           />
+        </section>
+
+        <section className="p-2 w-full flex justify-center">
+            <AdminCaloris
+              activities={state.activities}
+            />
         </section>
 
         {isEmpty? <p className="text-2xl capitalize font-extrabold text-shadow-md text-shadow-white text-center">consumos y calorias</p> : <p className="text-2xl capitalize font-extrabold text-shadow-md text-shadow-white text-center">no hay datos que mostrar</p>}

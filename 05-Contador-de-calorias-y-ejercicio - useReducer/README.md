@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# 🥗🏃 Proyecto 03 – Contador de Calorías y Ejercicio (useReducer)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto corresponde al **tercer proyecto práctico del curso**, donde se construye una aplicación para **registrar comidas y ejercicios**, calcular **calorías consumidas y quemadas**, y mostrar el **balance total**, utilizando **useReducer** para el manejo del estado.
 
-Currently, two official plugins are available:
+El objetivo principal fue aprender a manejar **estado complejo en React** usando reducers y acciones.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🌐 Demo del Proyecto
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+👉 **Ver aplicación en producción:**  
+https://calori-traker.netlify.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tecnologías Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- ⚛️ React
+- 🟦 TypeScript
+- 🎣 React Hooks (`useReducer`, `useState`)
+- 🎨 TailwindCSS
+- 💾 LocalStorage
+- ⚡ Vite
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧠 ¿Qué se desarrolló en este proyecto?
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Durante el desarrollo del proyecto se trabajaron los siguientes conceptos:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Creación y configuración del proyecto
+- Instalación y uso de TailwindCSS
+- Formularios controlados
+- Validación de formularios
+- Manejo de eventos (`change`, `submit`)
+- Inferencia de tipos en eventos con TypeScript
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🧩 Manejo de Estado con useReducer
+
+El estado principal de la aplicación se maneja con **useReducer**, permitiendo una lógica más clara y escalable.
+
+Se implementaron:
+
+- Definición del reducer
+- Creación de actions
+- Uso de `dispatch`
+- Actualización del estado desde el reducer
+- Reinicio del estado global
+
+---
+
+## 📋 Gestión de Actividades
+
+- Registro de **comidas** y **ejercicios**
+- Tipado de actividades con TypeScript
+- Generación de IDs únicos
+- Listado de actividades
+- Edición de actividades existentes
+- Eliminación de actividades
+- Mensaje condicional cuando no hay registros
+
+---
+
+## 💾 Persistencia de Datos
+
+- Guardado de actividades en **LocalStorage**
+- Recuperación automática de datos al recargar la aplicación
+- Acción para reiniciar completamente la app
+
+---
+
+## 🔥 Cálculo de Calorías
+
+- Cálculo de calorías consumidas
+- Cálculo de calorías quemadas
+- Cálculo del diferencial de calorías
+- Componentes separados para mostrar totales
+
+---
+
+## ▶️ Ejecución del Proyecto
+
+```bash
+npm install
+npm run dev
