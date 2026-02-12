@@ -3,11 +3,9 @@ import { Menu } from "./components/Menu"
 import { OrderItem } from "./components/OrderItem"
 import { OrderTip } from "./components/OrderTip"
 import { OrderTotal } from "./components/OrderTotal"
-import { useOrder } from "./hooks/userOrder"
 import { initialState, orderReducer } from "./Reducers/order-reducer"
 
 function App() {
-  const { tip, setTip } = useOrder()
 
   const [state, dispatch] = useReducer(orderReducer, initialState)
 
@@ -57,7 +55,9 @@ function App() {
                 />
               ))}
 
-              <OrderTip setTip={setTip} tip={tip} />
+              <OrderTip
+                dispatch={dispatch}
+              tip={state.tip} />
 
               <OrderTotal
                 order={state.order}

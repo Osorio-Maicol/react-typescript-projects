@@ -65,6 +65,21 @@ export const orderReducer = (
         }
     }
 
+    if(action.type == "addTip"){
+        return{
+            ...state,
+            tip: action.payload.tip
+        }
+    }
+
+    if(action.type == "clearOrder"){
+        return{
+            ...state,
+            tip: 0,
+            order: []
+        }
+    }
+
  
 
 

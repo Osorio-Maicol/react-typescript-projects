@@ -1,11 +1,13 @@
+import type { Dispatch } from "react"
 import { tipOptions } from "../data/db"
+import type { orderActions } from "../Reducers/order-reducer"
 
 type OrderTipProps = {
-  setTip: React.Dispatch<React.SetStateAction<number>>
   tip: number
+  dispatch: Dispatch<orderActions>
 }
 
-export const OrderTip = ({ setTip, tip }: OrderTipProps) => {
+export const OrderTip = ({ dispatch, tip }: OrderTipProps) => {
   return (
     <div className="w-3/4 bg-white rounded-xl p-4 shadow-md flex flex-col items-center gap-4">
       
@@ -31,7 +33,7 @@ export const OrderTip = ({ setTip, tip }: OrderTipProps) => {
               name="tip"
               value={item.value}
               checked={item.value === tip}
-              onChange={e => setTip(+e.target.value)}
+              onChange={e => dispatch({type: "addTip", payload: {tip: +e.target.value}})}
               className="accent-green-500 cursor-pointer"
             />
             <span className="font-medium">
