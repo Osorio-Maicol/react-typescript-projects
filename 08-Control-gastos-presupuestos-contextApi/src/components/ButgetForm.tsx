@@ -1,12 +1,20 @@
 import { useMemo, useState } from "react"
+import { useButget } from "../Hooks/useButget"
 
 export const ButgetForm = () => {
 
     const [butget, setButget] = useState(0)
+    const {dispatch} = useButget()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => {
         e.preventDefault()
         setButget(+e.target.valueAsNumber)
+    }
+
+    const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>)=>{
+        e.preventDefault()
+        dispatch({type: "add-butget", payload: {butget}})
+        
     }
 
     const isValidButget = useMemo(() => {
@@ -14,7 +22,7 @@ export const ButgetForm = () => {
     }, [butget])
 
     return (
-        <form className="space-y-2.5" >
+        <form className="space-y-2.5" onSubmit={handleSubmit}>
             <input type="number" name="butget" id="butget" className="w-full ring-1 p-2 rounded-xl" placeholder="agrega un presupuesto iniciar ej: 500" value={butget} onChange={e => handleChange(e)} />
 
 
