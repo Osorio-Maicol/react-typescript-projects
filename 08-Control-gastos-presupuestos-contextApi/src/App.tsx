@@ -1,8 +1,8 @@
 import { ButgetForm } from "./components/ButgetForm"
 
 
-function App() {
 
+function App() {
   return (
     <>
       <header className="p-2 w-full bg-blue-400 text-center text-2xl capitalize font-extrabold text-shadow-white text-shadow-md mb-3">
